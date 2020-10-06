@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Locale;
 
 import entities.Product;
-import util.ProductPredicate;
 
 public class Program {
 
@@ -20,8 +19,9 @@ public class Program {
 		list.add(new Product("Tablet", 350.50));
 		list.add(new Product("HD Case", 80.90));
 
-		list.removeIf(new ProductPredicate());
-		
+		list.removeIf(Product::staticProductPredicate); //No java ele aceita uma referência para o metodo, ao inves de um objeto
+		                                       //instanciado (new ProductPredicate). 
+											   //Isso é chamado de Method Reference.
 		for (Product p : list) {
 			System.out.println(p);
 		}
