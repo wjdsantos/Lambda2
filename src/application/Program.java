@@ -19,9 +19,11 @@ public class Program {
 		list.add(new Product("Mouse", 50.00));
 		list.add(new Product("Tablet", 350.50));
 		list.add(new Product("HD Case", 80.90));
-
-		Predicate<Product> pred = p -> p.getPrice() >= 100.0; //Criando variavel do tipo Predicate
 		
+		double min = 100.0;
+
+		Predicate<Product> pred = p -> p.getPrice() >= min; //Criando variavel do tipo Predicate e pegando o valor de
+															// de comparacao de uma variavel
 		list.removeIf(pred); //Sem referencia de metodo - utilizando a variavel do tipo Predicate
 											   
 		for (Product p : list) {
