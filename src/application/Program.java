@@ -20,12 +20,14 @@ public class Program {
 		list.add(new Product("Tablet", 350.50));
 		list.add(new Product("HD Case", 80.90));
 		
+		// Expressao lambda inline
 		double min = 100.0;
 
-		Predicate<Product> pred = p -> p.getPrice() >= min; //Criando variavel do tipo Predicate e pegando o valor de
-															// de comparacao de uma variavel
-		list.removeIf(pred); //Sem referencia de metodo - utilizando a variavel do tipo Predicate
-											   
+		//Predicate<Product> pred = p -> p.getPrice() >= min; 
+															
+		list.removeIf(p -> p.getPrice() >= min); //Em vez de criar uma variavel para passar como argumento
+						 			   			 // pego a expressao lambda e coloco como argumento diretamente
+
 		for (Product p : list) {
 			System.out.println(p);
 		}
