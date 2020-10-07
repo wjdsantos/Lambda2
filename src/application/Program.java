@@ -3,6 +3,7 @@ package application;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Predicate;
 
 import entities.Product;
 
@@ -19,9 +20,10 @@ public class Program {
 		list.add(new Product("Tablet", 350.50));
 		list.add(new Product("HD Case", 80.90));
 
-		list.removeIf(Product::staticProductPredicate); //No java ele aceita uma referência para o metodo, ao inves de um objeto
-		                                       //instanciado (new ProductPredicate). 
-											   //Isso é chamado de Method Reference.
+		Predicate<Product> pred = p -> p.getPrice() >= 100.0; //Criando variavel do tipo Predicate
+		
+		list.removeIf(pred); //Sem referencia de metodo - utilizando a variavel do tipo Predicate
+											   
 		for (Product p : list) {
 			System.out.println(p);
 		}
